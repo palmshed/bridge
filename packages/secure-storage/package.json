@@ -1,0 +1,18 @@
+{
+  "name": "@palmshed/secure-storage",
+  "version": "0.1.0",
+  "description": "Secure storage for sensitive application data.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "typescript": "^5.7",
+    "vitest": "^3.2"
+  },
+  "license": "MIT"
+}

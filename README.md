@@ -88,11 +88,12 @@ See `docs/plugin-api.md` for the full interface guide.
 
 ## Plugins
 
-No plugins are implemented yet. Plugins will be added when at least two projects can benefit from them.
+### Current
+
+- **@palmshed/secure-storage**. Secure storage for sensitive application data.
 
 ### Possible Future Plugins
 
-- Secure Storage
 - Share
 - File Access
 - Document Picker
