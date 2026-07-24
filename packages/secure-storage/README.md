@@ -67,7 +67,7 @@ Returns all stored keys.
 
 ### Android
 
-Uses `EncryptedSharedPreferences` with AES-256-GCM encryption. The encryption key is managed by the Android Keystore system.
+Uses `EncryptedSharedPreferences` with AES-256-GCM encryption. The encryption key is managed by the Android Keystore system and is protected by the user's screen lock credential when set.
 
 Requires:
 
@@ -76,7 +76,7 @@ Requires:
 
 ### iOS
 
-Uses Keychain Services with the device's secure enclave when available. Data is encrypted with the device's passcode-derived key.
+Uses Keychain Services with `kSecAttrAccessibleAfterFirstUnlock`. Items are available after the device is first unlocked following a restart. Data is encrypted with the device's passcode-derived key when available.
 
 Requires:
 
@@ -85,7 +85,7 @@ Requires:
 
 ### Web
 
-Falls back to `localStorage` with a `secure_` prefix. This is **not** encrypted. Use the native implementations for production.
+This implementation is a **development fallback** for use in browsers during local development. Values are stored in `localStorage` with a `secure_` prefix. This does not provide encryption and should not be relied upon for protecting sensitive information. Use the native implementations for production.
 
 ## Error Handling
 
@@ -106,7 +106,7 @@ try {
 - Values must be strings. Serialize objects before storing.
 - Storage size is limited by the platform (typically 4MB on Android, varies on iOS).
 - Not suitable for large files or binary data.
-- Web fallback is not encrypted.
+- Web fallback is a development tool only. It does not provide encryption.
 
 ## Development
 
