@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.BridgeExample" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">#b8a472</item>
+        <item name="colorPrimaryVariant">#9a8a62</item>
+        <item name="colorOnPrimary">#ffffff</item>
+        <item name="colorSecondary">#6b6b6b</item>
+        <item name="colorSecondaryVariant">#555555</item>
+        <item name="colorOnSecondary">#ffffff</item>
+    </style>
+</resources>
