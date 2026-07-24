@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>bridge</title>
+    <meta name="description" content="bridge ~ Reusable native integrations for web applications. Built by Palmshed." />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  </head>
+  <body>
+    <nav>
+      <span class="nav-mark">bridge</span>
+      <ul class="nav-links" id="nav">
+        <li><a href="./index.html" class="active">Home</a></li>
+        <li><a href="https://github.com/palmshed/bridge">Source</a></li>
+        <li><a href="https://github.com/palmshed/bridge/blob/main/CONTRIBUTING.md">Contributing</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-content">
+        <div class="hero-mark">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 3H5a2 2 0 0 0-2 2v14c0 1.1.9 2 2 2h3"/>
+            <path d="M16 3h3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-3"/>
+            <path d="M12 20v-4"/>
+            <path d="M12 8v4"/>
+            <path d="M8 12h8"/>
+          </svg>
+          <span>bridge</span>
+        </div>
+        <h1>Reusable native integrations for web applications.</h1>
+        <p>Bridge connects web applications to native platform capabilities. Small, stable, well-documented interfaces that hide platform-specific complexity.</p>
+        <div class="hero-actions">
+          <a href="https://github.com/palmshed/bridge">GitHub</a>
+          <a href="https://github.com/palmshed/bridge/blob/main/README.md">Documentation</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="page">
+      <section>
+        <h2>The problem</h2>
+        <p>Web applications need native capabilities: secure storage, biometrics, file access, share sheets, offline downloads. Each platform implements these differently. Without a shared layer, every application rebuilds the same bridges.</p>
+      </section>
+
+      <section>
+        <h2>The approach</h2>
+        <p>Bridge provides a single interface for native capabilities. One TypeScript API, implemented in Kotlin for Android and Swift for iOS. Applications call the web interface. Bridge handles the platform-specific work.</p>
+        <p>No unnecessary abstraction. No generic frameworks. Just small, focused plugins that solve real problems shared by multiple projects.</p>
+      </section>
+
+      <section>
+        <h2>Principles</h2>
+        <ul>
+          <li><strong>Quiet.</strong> The interface should almost disappear.</li>
+          <li><strong>Stable.</strong> API compatibility maintained across versions.</li>
+          <li><strong>Documented.</strong> Every plugin includes examples and platform notes.</li>
+          <li><strong>Tested.</strong> TypeScript, Android, and iOS tests for every plugin.</li>
+          <li><strong>Shared.</strong> Added only when at least two projects need it.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Current state</h2>
+        <p>Bridge is a foundation. No plugins are implemented yet. The first plugin will be added when a second project needs the same native capability.</p>
+        <p>This is intentional. Premature abstraction adds maintenance without adding value. Real need drives real design.</p>
+      </section>
+
+      <section>
+        <h2>Structure</h2>
+        <ul>
+          <li><code>packages/bridge-core/</code> — core utilities</li>
+          <li><code>packages/example-app/</code> — development playground</li>
+          <li><code>docs/</code> — design language and philosophy</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="https://github.com/palmshed/bridge">GitHub</a></li>
+          <li><a href="https://github.com/palmshed/bridge/blob/main/CONTRIBUTING.md">Contributing</a></li>
+          <li><a href="https://github.com/palmshed/bridge/blob/main/docs/philosophy.md">Philosophy</a></li>
+        </ul>
+        <p class="feedback">Found something unexpected? <a href="https://github.com/palmshed/bridge/issues">Report an issue</a>.</p>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Palmshed</p>
+      <ul class="footer-links">
+        <li><a href="https://github.com/palmshed/bridge/blob/main/SECURITY.md">Security</a></li>
+        <li><a href="https://github.com/palmshed/bridge/blob/main/LICENSE">License</a></li>
+      </ul>
+    </footer>
+
+    <script>
+      (function() {
+        var toggle = document.querySelector('.mobile-menu-toggle');
+        var nav = document.getElementById('nav');
+        if (!toggle || !nav) return;
+        function sync() { toggle.setAttribute('aria-expanded', nav.classList.contains('active')); }
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          nav.classList.toggle('active');
+          sync();
+        });
+        document.addEventListener('click', function(e) {
+          if (nav.classList.contains('active') && !nav.contains(e.target) && e.target !== toggle) {
+            nav.classList.remove('active');
+            sync();
+          }
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            sync();
+            toggle.focus();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
