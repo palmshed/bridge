@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>docs ~ bridge</title>
+    <meta name="description" content="Philosophy and principles behind Bridge." />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  </head>
+  <body>
+    <nav>
+      <span class="nav-mark">bridge</span>
+      <ul class="nav-links" id="nav">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./plugins.html">Plugins</a></li>
+        <li><a href="./docs.html" class="active">Docs</a></li>
+        <li><a href="./contribute.html">Contribute</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    </nav>
+
+    <div class="hero hero-short">
+      <div class="hero-content">
+        <h1>Philosophy and principles</h1>
+        <p>How Bridge is designed and why.</p>
+      </div>
+    </div>
+
+    <div class="page">
+      <section>
+        <h2>The purpose</h2>
+        <p>Bridge exists to make native capabilities feel like part of the web application. It should expose small, stable, and well-documented interfaces, while hiding platform-specific complexity.</p>
+        <p>Every plugin should solve a real problem shared by multiple projects before it is added.</p>
+      </section>
+
+      <section>
+        <h2>Principles</h2>
+        <h3>Prefer simple abstractions over generic frameworks</h3>
+        <p>Every abstraction should earn its keep. A plugin exists because there is a real native capability that multiple web applications need. A generic "PluginFactory" meta-framework does not exist because it would add indirection without solving a concrete problem.</p>
+        <p>Build for what you have, not for what you imagine you might one day need.</p>
+
+        <h3>Build platform capabilities only after two products need them</h3>
+        <p>Bridge exists because future Palmshed products would each need native capabilities like secure storage, biometrics, and file access. Extracting those capabilities once for Bridge avoids rebuilding them three more times.</p>
+        <p>A capability that only one product will ever use does not belong in Bridge. It belongs in the product.</p>
+
+        <h3>Public APIs evolve conservatively</h3>
+        <p>Every exported symbol is a commitment. Changing it requires a major version bump, deprecation warnings, and a migration window.</p>
+        <p>It is better to leave a symbol internal for an extra release than to expose it and immediately regret the shape.</p>
+
+        <h3>Verification is required before every release</h3>
+        <p>Lint, typecheck, and tests must pass before any release is cut. If CI cannot verify the code, the release does not ship.</p>
+
+        <h3>Documentation and tests are part of the implementation</h3>
+        <p>A plugin is not complete until it has tests that cover the public API, platform-specific tests for Android and iOS, a README that documents configuration and usage, and a short example showing basic usage.</p>
+        <p>Documentation is not a separate task. It is the same task.</p>
+
+        <h3>Favor the standard web platform where practical</h3>
+        <p>Use the Web APIs that are available across browsers and platforms. Reach for native bridges only when the web platform cannot solve the problem.</p>
+        <p>This is not a universal rule. When a native capability dramatically improves the user experience, use it. But default to web first and justify every native bridge.</p>
+
+        <h3>A healthy project says no</h3>
+        <p>The most important architectural skill is knowing when a capability is not yet needed. Bridge will grow. It should grow because multiple products need it, not because there is another abstract service waiting to be extracted.</p>
+      </section>
+
+      <section>
+        <h2>Conventions</h2>
+        <ul>
+          <li>Keep one plugin per directory.</li>
+          <li>Version plugins independently where practical.</li>
+          <li>Maintain API compatibility whenever possible.</li>
+          <li>Include Android, iOS, and TypeScript tests for every plugin.</li>
+          <li>Document each plugin with a short example and platform notes.</li>
+          <li>Prefer additive changes over breaking changes.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Related</h2>
+        <ul>
+          <li><a href="./plugins.html">Plugins</a></li>
+          <li><a href="./contribute.html">Contribute</a></li>
+          <li><a href="https://github.com/palmshed/bridge/blob/main/docs/palmshed-design.md">Palmshed Design Language</a></li>
+          <li><a href="https://github.com/palmshed/bridge/blob/main/docs/palmshed-tokens.md">Design Tokens</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Palmshed</p>
+      <ul class="footer-links">
+        <li><a href="./security.html">Security</a></li>
+        <li><a href="https://github.com/palmshed/bridge/blob/main/LICENSE">License</a></li>
+      </ul>
+    </footer>
+
+    <script>
+      (function() {
+        var toggle = document.querySelector('.mobile-menu-toggle');
+        var nav = document.getElementById('nav');
+        if (!toggle || !nav) return;
+        function sync() { toggle.setAttribute('aria-expanded', nav.classList.contains('active')); }
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          nav.classList.toggle('active');
+          sync();
+        });
+        document.addEventListener('click', function(e) {
+          if (nav.classList.contains('active') && !nav.contains(e.target) && e.target !== toggle) {
+            nav.classList.remove('active');
+            sync();
+          }
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            sync();
+            toggle.focus();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

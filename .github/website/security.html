@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>security ~ bridge</title>
+    <meta name="description" content="Bridge security policy." />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  </head>
+  <body>
+    <nav>
+      <span class="nav-mark">bridge</span>
+      <ul class="nav-links" id="nav">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./plugins.html">Plugins</a></li>
+        <li><a href="./docs.html">Docs</a></li>
+        <li><a href="./contribute.html">Contribute</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    </nav>
+
+    <div class="hero hero-short">
+      <div class="hero-content">
+        <h1>Security</h1>
+        <p>Reporting vulnerabilities and security practices.</p>
+      </div>
+    </div>
+
+    <div class="page">
+      <section>
+        <h2>Reporting a vulnerability</h2>
+        <p>If you discover a security vulnerability, please report it responsibly.</p>
+        <p>Do not open a public issue.</p>
+        <p>Instead, email <a href="mailto:security@palmshed.dev">security@palmshed.dev</a> with a description of the vulnerability, steps to reproduce, and potential impact.</p>
+      </section>
+
+      <section>
+        <h2>Response</h2>
+        <p>We will acknowledge receipt within 48 hours and provide a resolution timeline within 7 days.</p>
+      </section>
+
+      <section>
+        <h2>Supported versions</h2>
+        <p>Only the latest version receives security updates.</p>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Palmshed</p>
+      <ul class="footer-links">
+        <li><a href="./security.html">Security</a></li>
+        <li><a href="https://github.com/palmshed/bridge/blob/main/LICENSE">License</a></li>
+      </ul>
+    </footer>
+
+    <script>
+      (function() {
+        var toggle = document.querySelector('.mobile-menu-toggle');
+        var nav = document.getElementById('nav');
+        if (!toggle || !nav) return;
+        function sync() { toggle.setAttribute('aria-expanded', nav.classList.contains('active')); }
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          nav.classList.toggle('active');
+          sync();
+        });
+        document.addEventListener('click', function(e) {
+          if (nav.classList.contains('active') && !nav.contains(e.target) && e.target !== toggle) {
+            nav.classList.remove('active');
+            sync();
+          }
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            sync();
+            toggle.focus();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>

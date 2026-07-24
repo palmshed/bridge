@@ -8,10 +8,10 @@ Bridge is Palmshed's foundation for native capabilities shared across our web-ba
 
 ## Principles
 
-- **Reusable** — built for multiple applications, not a single project.
-- **Minimal** — small, well-documented APIs with few dependencies.
-- **Platform-agnostic** — focused on the interface, not the implementation.
-- **Consistent** — follows the same design philosophy as [Base](https://github.com/palmshed/base).
+- **Reusable**. Built for multiple applications, not a single project.
+- **Minimal**. Small, well-documented APIs with few dependencies.
+- **Platform-agnostic**. Focused on the interface, not the implementation.
+- **Consistent**. Follows the same design philosophy as [Base](https://github.com/palmshed/base).
 
 ## Structure
 

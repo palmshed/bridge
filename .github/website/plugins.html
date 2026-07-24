@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>plugins ~ bridge</title>
+    <meta name="description" content="Current and future Bridge plugins." />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  </head>
+  <body>
+    <nav>
+      <span class="nav-mark">bridge</span>
+      <ul class="nav-links" id="nav">
+        <li><a href="./index.html">Home</a></li>
+        <li><a href="./plugins.html" class="active">Plugins</a></li>
+        <li><a href="./docs.html">Docs</a></li>
+        <li><a href="./contribute.html">Contribute</a></li>
+      </ul>
+      <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">Menu</button>
+    </nav>
+
+    <div class="hero hero-short">
+      <div class="hero-content">
+        <h1>Plugins</h1>
+        <p>Native capabilities exposed as web interfaces.</p>
+      </div>
+    </div>
+
+    <div class="page">
+      <section>
+        <h2>Current state</h2>
+        <p>Bridge is a foundation. No plugins are implemented yet. The first plugin will be added when a second project needs the same native capability.</p>
+        <p>This is intentional. Premature abstraction adds maintenance without adding value. Real need drives real design.</p>
+      </section>
+
+      <section>
+        <h2>Structure</h2>
+        <p>Each plugin lives in its own directory under <code>packages/</code>. A plugin includes:</p>
+        <ul>
+          <li>TypeScript source defining the web interface</li>
+          <li>Android implementation in Kotlin</li>
+          <li>iOS implementation in Swift</li>
+          <li>Tests for all three platforms</li>
+          <li>Documentation with examples</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Possible future plugins</h2>
+        <p>These are candidates, not commitments. Each will be added only when real projects need them.</p>
+        <ul>
+          <li><strong>Secure Storage</strong> encrypted key-value storage for sensitive data</li>
+          <li><strong>Share</strong> native share sheet integration</li>
+          <li><strong>File Access</strong> document picker and file system access</li>
+          <li><strong>Biometrics</strong> fingerprint and face recognition</li>
+          <li><strong>Local Notifications</strong> scheduled and immediate notifications</li>
+          <li><strong>Reader</strong> EPUB and PDF viewing helpers</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Adding a plugin</h2>
+        <p>See the <a href="./contribute.html">contribution guide</a> for the process of adding a new plugin.</p>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2026 Palmshed</p>
+      <ul class="footer-links">
+        <li><a href="./security.html">Security</a></li>
+        <li><a href="https://github.com/palmshed/bridge/blob/main/LICENSE">License</a></li>
+      </ul>
+    </footer>
+
+    <script>
+      (function() {
+        var toggle = document.querySelector('.mobile-menu-toggle');
+        var nav = document.getElementById('nav');
+        if (!toggle || !nav) return;
+        function sync() { toggle.setAttribute('aria-expanded', nav.classList.contains('active')); }
+        toggle.addEventListener('click', function(e) {
+          e.stopPropagation();
+          nav.classList.toggle('active');
+          sync();
+        });
+        document.addEventListener('click', function(e) {
+          if (nav.classList.contains('active') && !nav.contains(e.target) && e.target !== toggle) {
+            nav.classList.remove('active');
+            sync();
+          }
+        });
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && nav.classList.contains('active')) {
+            nav.classList.remove('active');
+            sync();
+            toggle.focus();
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
