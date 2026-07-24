@@ -25,9 +25,9 @@ packages/
 │   │   ├── index.test.ts     # Tests
 │   │   ├── types.ts          # Shared types (optional)
 │   │   ├── android/
-│   │   │   └── index.ts      # Android implementation
+│   │   │   └── Plugin.kt     # Android implementation
 │   │   └── ios/
-│   │       └── index.ts      # iOS implementation
+│   │       └── Plugin.swift  # iOS implementation
 │   ├── README.md
 │   ├── package.json
 │   └── tsconfig.json
@@ -44,6 +44,7 @@ export interface SecureStorage {
   set(key: string, value: string): Promise<void>;
   remove(key: string): Promise<void>;
   clear(): Promise<void>;
+  keys(): Promise<string[]>;
 }
 
 export declare const secureStorage: SecureStorage;

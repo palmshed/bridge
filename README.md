@@ -18,12 +18,13 @@ Bridge is Palmshed's foundation for native capabilities shared across our web-ba
 ```
 bridge/
 ├── packages/
-│   ├── bridge-core/      # Shared utilities
-│   └── example-app/      # Development playground
-├── docs/                 # Design language and philosophy
+│   ├── bridge-core/        # Shared utilities
+│   ├── secure-storage/     # Secure key-value storage
+│   └── example-app/        # Development playground
+├── docs/                   # Design language and philosophy
 ├── .github/
-│   ├── workflows/        # CI and release automation
-│   └── website/          # Landing page
+│   ├── workflows/          # CI and release automation
+│   └── website/            # Landing page
 ├── CONTRIBUTING.md
 ├── LICENSE
 └── README.md
@@ -54,6 +55,8 @@ npm run build        # Build example app
 
 ### Capacitor
 
+These commands run from the `packages/example-app/` directory:
+
 ```bash
 npm run build:app    # Build for mobile
 npm run cap:sync     # Sync with native platforms
@@ -79,7 +82,7 @@ packages/
 └── example-app/
 ```
 
-2. Define the TypeScript interface in `src/index.ts`.
+2. Define the TypeScript interface in `src/types.ts` and export it from `src/index.ts`.
 3. Implement platform code in `android/` (Kotlin) and `ios/` (Swift).
 4. Add tests for all three platforms.
 5. Write a README with examples and platform notes.
@@ -110,7 +113,6 @@ When publishing to npm, use the `@palmshed/` scope:
 ```
 @palmshed/bridge-core
 @palmshed/secure-storage
-@palmshed/share
 ```
 
 Releases are triggered by Git tags:

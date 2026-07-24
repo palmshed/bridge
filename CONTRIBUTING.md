@@ -35,7 +35,7 @@ npm run build        # Build example app
 See `docs/plugin-api.md` for the full guide.
 
 1. Create a directory under `packages/<plugin-name>/`.
-2. Define the TypeScript interface in `src/index.ts`.
+2. Define the TypeScript interface in `src/types.ts` and export it from `src/index.ts`.
 3. Implement platform code in `src/android/` (Kotlin) and `src/ios/` (Swift).
 4. Add tests for all three platforms.
 5. Write a README with examples and platform notes.
