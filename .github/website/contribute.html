@@ -51,12 +51,13 @@ npm run dev</code></pre>
       <section>
         <h2>Adding a plugin</h2>
         <ol>
-          <li>Create a directory under <code>packages/</code>.</li>
-          <li>Define the TypeScript interface.</li>
-          <li>Implement platform code in Kotlin and Swift.</li>
+          <li>Create a directory under <code>packages/&lt;plugin-name&gt;/</code>.</li>
+          <li>Define the TypeScript interface in <code>src/index.ts</code>.</li>
+          <li>Implement platform code in <code>src/android/</code> (Kotlin) and <code>src/ios/</code> (Swift).</li>
           <li>Add tests for all three platforms.</li>
-          <li>Update the documentation.</li>
+          <li>Write a README with examples and platform notes.</li>
         </ol>
+        <p>See the <a href="https://github.com/palmshed/bridge/blob/main/docs/plugin-api.md">Plugin API Guide</a> for the full interface contract and directory structure.</p>
       </section>
 
       <section>

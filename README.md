@@ -18,8 +18,12 @@ Bridge is Palmshed's foundation for native capabilities shared across our web-ba
 ```
 bridge/
 ├── packages/
-│   └── example-app/     # Development playground
-├── .github/workflows/   # CI and release automation
+│   ├── bridge-core/      # Shared utilities
+│   └── example-app/      # Development playground
+├── docs/                 # Design language and philosophy
+├── .github/
+│   ├── workflows/        # CI and release automation
+│   └── website/          # Landing page
 ├── CONTRIBUTING.md
 ├── LICENSE
 └── README.md
@@ -65,16 +69,22 @@ npm run cap:open:android # Open in Android Studio
 packages/
 ├── my-plugin/
 │   ├── src/
-│   │   └── index.ts
+│   │   ├── index.ts          # Web interface
+│   │   ├── index.test.ts     # TypeScript tests
+│   │   ├── android/          # Kotlin implementation
+│   │   └── ios/              # Swift implementation
+│   ├── README.md
 │   ├── package.json
 │   └── tsconfig.json
 └── example-app/
 ```
 
-2. Define the plugin interface in TypeScript.
-3. Implement platform-specific code in Kotlin (Android) and Swift (iOS).
-4. Add tests.
-5. Document the API.
+2. Define the TypeScript interface in `src/index.ts`.
+3. Implement platform code in `android/` (Kotlin) and `ios/` (Swift).
+4. Add tests for all three platforms.
+5. Write a README with examples and platform notes.
+
+See `docs/plugin-api.md` for the full interface guide.
 
 ## Plugins
 
@@ -90,7 +100,17 @@ No plugins are implemented yet. Plugins will be added when at least two projects
 - Local Notifications
 - Reader helpers
 
-## Release
+## Versioning
+
+Plugins version independently. Each plugin has its own version in its `package.json`.
+
+When publishing to npm, use the `@palmshed/` scope:
+
+```
+@palmshed/bridge-core
+@palmshed/secure-storage
+@palmshed/share
+```
 
 Releases are triggered by Git tags:
 

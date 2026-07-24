@@ -73,7 +73,7 @@ Documentation is not a separate task. It is the same task.
 Use the Web APIs that are available across browsers and platforms.
 Reach for native bridges only when the web platform cannot solve the problem.
 
-This is not a universal rule — when a native capability dramatically improves
+This is not a universal rule. When a native capability dramatically improves
 the user experience, use it. But default to web first and justify every
 native bridge.
 
@@ -122,14 +122,14 @@ the kind of over-engineering that produces elegant infrastructure
 and a mediocre product.
 
 The goal is a repository that is easy to understand, easy to change,
-and easy to operate — not one that is maximally abstract or
+and easy to operate, not one that is maximally abstract or
 theoretically pure.
 
 ---
 
 ## Related Documents
 
-- `docs/palmshed-design.md` — the Palmshed design language
-- `docs/palmshed-tokens.md` — shared design tokens
-- `CONTRIBUTING.md` — how to contribute
-- `README.md` — getting started
+- `docs/palmshed-design.md`. The Palmshed design language
+- `docs/palmshed-tokens.md`. Shared design tokens
+- `CONTRIBUTING.md`. How to contribute
+- `README.md`. Getting started
