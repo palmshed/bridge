@@ -2,6 +2,8 @@
 
 Reusable native integrations for web applications.
 
+This project follows the [Palmshed Engineering Philosophy](https://github.com/palmshed/palmshed.github.io/blob/main/PHILOSOPHY.md).
+
 ## Purpose
 
 Bridge is Palmshed's foundation for native capabilities shared across our web-based applications. It provides a stable bridge between web applications and platform-specific features, regardless of the underlying implementation.
